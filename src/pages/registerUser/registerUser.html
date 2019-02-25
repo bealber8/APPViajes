@@ -1,0 +1,101 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            Register
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="formRegister" (ngSubmit)="postUser()" novalidate>
+        <ion-list>
+            <ion-item>
+                <ion-label stacked><ion-icon name="person"></ion-icon> Name:</ion-label>
+                <ion-input formControlName="name" type="text" placeholder="Name"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formRegister.get('name').errors && formRegister.get('name').dirty">
+                <p color="danger" ion-text *ngIf="formRegister.get('name').hasError('maxLength')">Max of 50
+                    characters</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('name').hasError('pattern')">It is not a
+                    correct name</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('name').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="person"></ion-icon> Surname:</ion-label>
+                <ion-input formControlName="surname" type="text" placeholder="Surname"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formRegister.get('surname').errors && formRegister.get('surname').dirty">
+                <p color="danger" ion-text *ngIf="formRegister.get('surname').hasError('maxLength')">Max of 50
+                    characters</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('surname').hasError('pattern')">It is not a
+                    correct name</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('surname').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="compass"></ion-icon> Address:</ion-label>
+                <ion-input formControlName="address" type="text" placeholder="Address"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formRegister.get('address').errors && formRegister.get('address').dirty">
+                <p color="danger" ion-text *ngIf="formRegister.get('address').hasError('maxLength')">Max of 50
+                    characters</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('address').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="call"></ion-icon> Telephone:</ion-label>
+                <ion-input formControlName="telephone" type="text" placeholder="telephone"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formRegister.get('telephone').errors && formRegister.get('telephone').dirty">
+                <p color="danger" ion-text *ngIf="formRegister.get('telephone').hasError('maxLength')">Max of 50
+                    characters</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('telephone').hasError('pattern')">It is not a
+                    correct name</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('telephone').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="at"></ion-icon> Email:</ion-label>
+                <ion-input formControlName="email" type="text" placeholder="Email"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formRegister.get('email').errors && formRegister.get('email').dirty">
+                <p color="danger" ion-text *ngIf="formRegister.get('email').hasError('maxLength')">Max of 50
+                    characters</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('email').hasError('pattern')">It is not a
+                    correct name</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('email').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="contact"></ion-icon> Username:</ion-label>
+                <ion-input formControlName="username" type="text" placeholder="Username"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formRegister.get('username').errors && formRegister.get('username').dirty">
+                <p color="danger" ion-text *ngIf="formRegister.get('username').hasError('maxLength')">Max of 50
+                    characters</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('username').hasError('pattern')">It is not a
+                    correct name</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('username').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="unlock"></ion-icon> Password:</ion-label>
+                <ion-input formControlName="password" type="password" placeholder="password"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formRegister.get('password').errors && formRegister.get('password').dirty">
+                <p color="danger" ion-text *ngIf="formRegister.get('password').hasError('pattern')">It is not a
+                    correct password</p>
+                <p color="danger" ion-text *ngIf="formRegister.get('password').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+        </ion-list>
+        <div padding>
+            <button id='buttonInsert' color='danger' ion-button block type="submit" [disabled]="formRegister.invalid">Sign
+                In</button>
+        </div>
+    </form>
+</ion-content>

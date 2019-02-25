@@ -1,0 +1,155 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Travel Requests
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="formInsert" (ngSubmit)="postTravel()" novalidate>
+        <ion-list>
+            <ion-item>
+                <ion-label stacked><ion-icon name="create"></ion-icon> Reason for the trip:</ion-label>
+                <ion-input formControlName="name" type="text" placeholder=""></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('name').errors && formInsert.get('name').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('name').hasError('maxLength')">Max of 150 characters</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('name').hasError('pattern')">It is not a correct reason</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('name').hasError('required')">Field is required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="contact"></ion-icon> Applicant:</ion-label>
+                <ion-input formControlName="x_solicitante_id" type="number" placeholder=""></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('x_solicitante_id').errors && formInsert.get('x_solicitante_id').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('x_solicitante_id').hasError('required')">Field is required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="car"></ion-icon> Conveyance:</ion-label>
+                <ion-select formControlName="x_medio_transporte" interface="popover">
+                    <ion-option value="1"> Avión </ion-option> 
+                    <ion-option value="2"> Barco </ion-option> 
+                </ion-select>
+                <!-- <ion-input formControlName="x_medio_transporte" type="text" placeholder=""></ion-input> -->
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('x_medio_transporte').errors && formInsert.get('x_medio_transporte').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('x_medio_transporte').hasError('required')">Field is required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="clipboard"></ion-icon> Project:</ion-label>
+                <ion-input formControlName="x_project_id" type="number" placeholder=""></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('x_project_id').errors && formInsert.get('x_project_id').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('x_project_id').hasError('required')">Field is required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="pin"></ion-icon> Origin place:</ion-label>
+                <ion-select formControlName="x_lista_lugar_origen" interface="popover">
+                    <ion-option value="Gran Canaria"> Gran Canaria </ion-option> 
+                    <ion-option value="Tenerife norte"> Tenerife norte </ion-option> 
+                    <ion-option value="Tenerife sur"> Tenerife sur </ion-option> 
+                    <ion-option value="Lanzarote"> Lanzarote </ion-option> 
+                    <ion-option value="Fuerteventura"> Fuerteventura </ion-option> 
+                    <ion-option value="La Palma"> La Palma </ion-option> 
+                    <ion-option value="Gomera"> Gomera </ion-option> 
+                    <ion-option value="El Hierro"> El Hierro </ion-option> 
+                    <ion-option value="Madrid"> Madrid </ion-option> 
+                    <ion-option value="Barcelona"> Barcelona </ion-option> 
+                </ion-select>
+                <!-- <ion-input formControlName="x_lugar_origen" type="number" placeholder=""></ion-input> -->
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('x_lista_lugar_origen').errors && formInsert.get('x_lista_lugar_origen').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('x_lista_lugar_origen').hasError('required')">Field is required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="navigate"></ion-icon> Destination place:</ion-label>
+                <ion-select formControlName="x_lista_lugar_destino" interface="popover">
+                    <ion-option value="Gran Canaria"> Gran Canaria </ion-option> 
+                    <ion-option value="Tenerife norte"> Tenerife norte </ion-option> 
+                    <ion-option value="Tenerife sur"> Tenerife sur </ion-option> 
+                    <ion-option value="Lanzarote"> Lanzarote </ion-option> 
+                    <ion-option value="Fuerteventura"> Fuerteventura </ion-option> 
+                    <ion-option value="La Palma"> La Palma </ion-option> 
+                    <ion-option value="Gomera"> Gomera </ion-option> 
+                    <ion-option value="El Hierro"> El Hierro </ion-option> 
+                    <ion-option value="Madrid"> Madrid </ion-option> 
+                    <ion-option value="Barcelona"> Barcelona </ion-option> 
+                </ion-select>
+                <!-- <ion-input formControlName="x_lugar_destino" type="number" placeholder="CarDealership"></ion-input> -->
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('x_lista_lugar_destino').errors && formInsert.get('x_lista_lugar_destino').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('x_lista_lugar_destino').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="calendar"></ion-icon> Departure date:</ion-label>
+                <ion-input formControlName="x_fecha_ida" type="text" placeholder=""></ion-input>
+                <!-- <ion-datetime displayFormat="YYYY-MM-DD HH:mm:ss" formControlName="x_fecha_ida"></ion-datetime> -->
+                <!-- <ion-input formControlName="x_fecha_ida" type="number" placeholder="CarDealership"></ion-input> -->
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('x_fecha_ida').errors && formInsert.get('x_fecha_ida').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_ida').hasError('maxLength')">Max of 19 characters</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_ida').hasError('pattern')">It is not a correct date(YYYY-MM-DD HH:mm:ss)</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_ida').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="calendar"></ion-icon> Return date:</ion-label>
+                <ion-input formControlName="x_fecha_vuelta" type="text" placeholder=""></ion-input>
+                <!-- <ion-datetime displayFormat="YYYY-MM-DD HH:mm:ss" formControlName="x_fecha_vuelta"></ion-datetime> -->
+                <!-- <ion-input formControlName="x_fecha_vuelta" type="number" placeholder="CarDealership"></ion-input> -->
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('x_fecha_vuelta').errors && formInsert.get('x_fecha_vuelta').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_vuelta').hasError('maxLength')">Max of 19 characters</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_vuelta').hasError('pattern')">It is not a correct date(YYYY-MM-DD HH:mm:ss)</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_vuelta').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="home"></ion-icon> Hotel:</ion-label>
+                <ion-input formControlName="x_nombre_hotel" type="text" placeholder=""></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('x_nombre_hotel').errors && formInsert.get('x_nombre_hotel').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('x_nombre_hotel').hasError('maxLength')">Max of 150 characters</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_nombre_hotel').hasError('pattern')">It is not a correct Hotel</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_nombre_hotel').hasError('required')">Field is required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="calendar"></ion-icon> Entry date:</ion-label>
+                <ion-input formControlName="x_fecha_entrada" type="text" placeholder=""></ion-input>
+                <!-- <ion-datetime displayFormat="YYYY-MM-DD HH:mm:ss" formControlName="x_fecha_entrada"></ion-datetime> -->
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('x_fecha_entrada').errors && formInsert.get('x_fecha_entrada').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_entrada').hasError('maxLength')">Max of 19 characters</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_entrada').hasError('pattern')">It is not a correct date(YYYY-MM-DD HH:mm:ss)</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_entrada').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="calendar"></ion-icon> Departure date:</ion-label>
+                <ion-input formControlName="x_fecha_salida" type="text" placeholder=""></ion-input>
+                <!-- <ion-datetime displayFormat="YYYY-MM-DD HH:mm:ss" formControlName="x_fecha_salida"></ion-datetime> -->
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('x_fecha_salida').errors && formInsert.get('x_fecha_salida').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_salida').hasError('maxLength')">Max of 19 characters</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_salida').hasError('pattern')">It is not a correct date(YYYY-MM-DD HH:mm:ss)</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_fecha_salida').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="search"></ion-icon> Observations:</ion-label>
+                <ion-input formControlName="x_observaciones" type="text" placeholder=""></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formInsert.get('x_observaciones').errors && formInsert.get('x_observaciones').dirty">
+                <p color="danger" ion-text *ngIf="formInsert.get('x_observaciones').hasError('maxLength')">Max of 300 characters</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_observaciones').hasError('pattern')">It is not a correct Observation</p>
+                <p color="danger" ion-text *ngIf="formInsert.get('x_observaciones').hasError('required')">Field is required</p>
+            </ion-item>
+        </ion-list>
+        <div padding>
+            <button id='buttonInsert' color='danger' ion-button block type="submit" [disabled]="formInsert.invalid">Save
+                Request</button>
+        </div>
+    </form>
+</ion-content>

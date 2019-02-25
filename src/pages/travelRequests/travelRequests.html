@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Travel Requests
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="insertTravel()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let travel of travels">
+      <ion-item class="custom-item">
+        <h2>Reason for the trip: <br>{{travel.name}}</h2>
+        <h2>Applicant: <br>{{travel.x_solicitante_id}}</h2>
+        <h2>Conveyance: <br>{{travel.x_medio_transporte}}</h2>
+        <h2>Project: <br>{{travel.x_project_id}}</h2>
+        <h2>Origin place: <br>{{travel.x_lista_lugar_origen}}</h2>
+        <h2>Destination place: <br>{{travel.x_lista_lugar_destino}}</h2>
+        <h2>Departure date: <br>{{travel.x_fecha_ida}}</h2>
+        <h2>Return date: <br>{{travel.x_fecha_vuelta}}</h2>
+        <h2>Hotel: <br>{{travel.x_nombre_hotel}}</h2>
+        <h2>Entry date: <br>{{travel.x_fecha_entrada}}</h2>
+        <h2>Departure date: <br>{{travel.x_fecha_salida}}</h2>
+        <h2>Observations: <br>{{travel.x_observaciones}}</h2>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color='white' (click)='updateTravel(travel)' icon-start>
+          <ion-icon name="create"></ion-icon>
+          Update
+        </button>
+        <button ion-button color='danger' (click)='deleteTravel(travel.id)' icon-start>
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,196 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Update Travel Requests
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form #travelForm="ngForm" (ngSubmit)="updateTravel(travelForm.value)" novalidate>
+        <ion-list>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="create"></ion-icon> Reason for the trip:
+                </ion-label>
+                <ion-input placeholder="" name="name" type="text" required minlength="2" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚ ]*"
+                    [(ngModel)]="travel.name" #name="ngModel">
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                        <div *ngIf="name.errors.required">Reason is required.</div>
+                        <div *ngIf="name.errors.minlength">Reason must be at least 2 characters long.</div>
+                        <div *ngIf="name.errors.pattern">It is not a correct reason</div>
+                    </div>
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="contact"></ion-icon> Applicant:
+                </ion-label>
+                <ion-input placeholder="" name="x_solicitante_id" type="number" required pattern="[0-9]*"
+                    [(ngModel)]="travel.x_solicitante_id" #x_solicitante_id="ngModel">
+                    <div *ngIf="x_solicitante_id.invalid && (x_solicitante_id.dirty || x_solicitante_id.touched)" class="alert alert-danger">
+                        <div *ngIf="x_solicitante_id.errors.required">Applicant is required.</div>
+                        <div *ngIf="x_solicitante_id.errors.pattern">It is not a correct applicant</div>
+                    </div>
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="car"></ion-icon> Conveyance:
+                </ion-label>
+                <ion-select name="x_medio_transporte" interface="popover" [(ngModel)]="travel.x_medio_transporte"
+                    #x_medio_transporte="ngModel">
+                    <ion-option value="1"> Avión </ion-option>
+                    <ion-option value="2"> Barco </ion-option>
+                </ion-select>
+                <div *ngIf="x_medio_transporte.invalid && (x_medio_transporte.dirty || x_medio_transporte.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="x_medio_transporte.errors.required">Conveyance is required.</div>
+                </div>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="clipboard"></ion-icon> Project:
+                </ion-label>
+                <ion-input placeholder="" name="x_project_id" type="number" required pattern="[0-9]*"
+                    [(ngModel)]="travel.x_project_id" #x_project_id="ngModel">
+                    <div *ngIf="x_project_id.invalid && (x_project_id.dirty || x_project_id.touched)" class="alert alert-danger">
+                        <div *ngIf="x_project_id.errors.required">Project is required.</div>
+                        <div *ngIf="x_project_id.errors.pattern">It is not a correct project</div>
+                    </div>
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="pin"></ion-icon> Origin place:
+                </ion-label>
+                <ion-select name="x_lista_lugar_origen" interface="popover" [(ngModel)]="travel.x_lista_lugar_origen"
+                    #x_lista_lugar_origen="ngModel">
+                    <ion-option value="Gran Canaria"> Gran Canaria </ion-option>
+                    <ion-option value="Tenerife norte"> Tenerife norte </ion-option>
+                    <ion-option value="Tenerife sur"> Tenerife sur </ion-option>
+                    <ion-option value="Lanzarote"> Lanzarote </ion-option>
+                    <ion-option value="Fuerteventura"> Fuerteventura </ion-option>
+                    <ion-option value="La Palma"> La Palma </ion-option>
+                    <ion-option value="Gomera"> Gomera </ion-option>
+                    <ion-option value="El Hierro"> El Hierro </ion-option>
+                    <ion-option value="Madrid"> Madrid </ion-option>
+                    <ion-option value="Barcelona"> Barcelona </ion-option>
+                </ion-select>
+                <div *ngIf="x_lista_lugar_origen.invalid && (x_lista_lugar_origen.dirty || x_lista_lugar_origen.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="x_lista_lugar_origen.errors.required">Origin place is required.</div>
+                </div>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="navigate"></ion-icon> Destination place:
+                </ion-label>
+                <ion-select name="x_lista_lugar_destino" interface="popover" [(ngModel)]="travel.x_lista_lugar_destino"
+                    #x_lista_lugar_destino="ngModel">
+                    <ion-option value="Gran Canaria"> Gran Canaria </ion-option>
+                    <ion-option value="Tenerife norte"> Tenerife norte </ion-option>
+                    <ion-option value="Tenerife sur"> Tenerife sur </ion-option>
+                    <ion-option value="Lanzarote"> Lanzarote </ion-option>
+                    <ion-option value="Fuerteventura"> Fuerteventura </ion-option>
+                    <ion-option value="La Palma"> La Palma </ion-option>
+                    <ion-option value="Gomera"> Gomera </ion-option>
+                    <ion-option value="El Hierro"> El Hierro </ion-option>
+                    <ion-option value="Madrid"> Madrid </ion-option>
+                    <ion-option value="Barcelona"> Barcelona </ion-option>
+                </ion-select>
+                <div *ngIf="x_lista_lugar_destino.invalid && (x_lista_lugar_destino.dirty || x_lista_lugar_destino.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="x_lista_lugar_destino.errors.required">Destination place is required.</div>
+                </div>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="calendar"></ion-icon> Departure date:
+                </ion-label>
+                <ion-input placeholder="" name="x_fecha_ida" type="text" required minlength="2" pattern="[0-9]{4}[-][0-9]{2}[-][0-9]{2}[ ][0-9]{2}[:][0-9]{2}[:][0-9]{2}"
+                    [(ngModel)]="travel.x_fecha_ida" #x_fecha_ida="ngModel">
+                    <div *ngIf="x_fecha_ida.invalid && (x_fecha_ida.dirty || x_fecha_ida.touched)" class="alert alert-danger">
+                        <div *ngIf="x_fecha_ida.errors.required">Departure date is required.</div>
+                        <div *ngIf="x_fecha_ida.errors.minlength">Date must be at least 2 characters long.</div>
+                        <div *ngIf="x_fecha_ida.errors.pattern">It is not a correct date(YYYY-MM-DD HH:mm:ss)</div>
+                    </div>
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="calendar"></ion-icon> Return date:
+                </ion-label>
+                <ion-input placeholder="" name="x_fecha_vuelta" type="text" required minlength="2" pattern="[0-9]{4}[-][0-9]{2}[-][0-9]{2}[ ][0-9]{2}[:][0-9]{2}[:][0-9]{2}"
+                    [(ngModel)]="travel.x_fecha_vuelta" #x_fecha_vuelta="ngModel">
+                    <div *ngIf="x_fecha_vuelta.invalid && (x_fecha_vuelta.dirty || x_fecha_vuelta.touched)" class="alert alert-danger">
+                        <div *ngIf="x_fecha_vuelta.errors.required">Return date is required.</div>
+                        <div *ngIf="x_fecha_vuelta.errors.minlength">Date must be at least 2 characters long.</div>
+                        <div *ngIf="x_fecha_vuelta.errors.pattern">It is not a correct date(YYYY-MM-DD
+                            HH:mm:ss)</div>
+                    </div>
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="home"></ion-icon> Hotel:
+                </ion-label>
+                <ion-input placeholder="" name="x_nombre_hotel" type="text" required minlength="2" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚ ]*"
+                    [(ngModel)]="travel.x_nombre_hotel" #x_nombre_hotel="ngModel">
+                    <div *ngIf="x_nombre_hotel.invalid && (x_nombre_hotel.dirty || x_nombre_hotel.touched)" class="alert alert-danger">
+                        <div *ngIf="x_nombre_hotel.errors.required">Hotel is required.</div>
+                        <div *ngIf="x_nombre_hotel.errors.minlength">Hotel must be at least 2 characters long.</div>
+                        <div *ngIf="x_nombre_hotel.errors.pattern">It is not a correct Hotel</div>
+                    </div>
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="calendar"></ion-icon> Entry date:
+                </ion-label>
+                <ion-input placeholder="" name="x_fecha_entrada" type="text" required minlength="2" pattern="[0-9]{4}[-][0-9]{2}[-][0-9]{2}[ ][0-9]{2}[:][0-9]{2}[:][0-9]{2}"
+                    [(ngModel)]="travel.x_fecha_entrada" #x_fecha_entrada="ngModel">
+                    <div *ngIf="x_fecha_entrada.invalid && (x_fecha_entrada.dirty || x_fecha_entrada.touched)" class="alert alert-danger">
+                        <div *ngIf="x_fecha_entrada.errors.required">Entry date is required.</div>
+                        <div *ngIf="x_fecha_entrada.errors.minlength">Date must be at least 2 characters long.</div>
+                        <div *ngIf="x_fecha_entrada.errors.pattern">It is not a correct date(YYYY-MM-DD
+                            HH:mm:ss)</div>
+                    </div>
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="calendar"></ion-icon> Departure date:
+                </ion-label>
+                <ion-input placeholder="" name="x_fecha_salida" type="text" required minlength="2" pattern="[0-9]{4}[-][0-9]{2}[-][0-9]{2}[ ][0-9]{2}[:][0-9]{2}[:][0-9]{2}"
+                    [(ngModel)]="travel.x_fecha_salida" #x_fecha_salida="ngModel">
+                    <div *ngIf="x_fecha_salida.invalid && (x_fecha_salida.dirty || x_fecha_salida.touched)" class="alert alert-danger">
+                        <div *ngIf="x_fecha_salida.errors.required">Departure date is required.</div>
+                        <div *ngIf="x_fecha_salida.errors.minlength">Date must be at least 2 characters long.</div>
+                        <div *ngIf="x_fecha_salida.errors.pattern">It is not a correct date(YYYY-MM-DD
+                            HH:mm:ss)</div>
+                    </div>
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>
+                    <ion-icon name="search"></ion-icon> Observations:
+                </ion-label>
+                <ion-input placeholder="" name="x_observaciones" type="text" required minlength="2" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚ ]*"
+                    [(ngModel)]="travel.x_observaciones" #x_observaciones="ngModel">
+                    <div *ngIf="x_observaciones.invalid && (x_observaciones.dirty || x_observaciones.touched)" class="alert alert-danger">
+                        <div *ngIf="x_observaciones.errors.required">Observations is required.</div>
+                        <div *ngIf="x_observaciones.errors.minlength">Observations must be at least 2
+                            characters long.</div>
+                        <div *ngIf="x_observaciones.errors.pattern">It is not a correct Observations</div>
+                    </div>
+                </ion-input>
+            </ion-item>
+        </ion-list>
+        <ion-row>
+            <ion-col>
+                <button ion-button color="danger" full type="submit" [disabled]="!travelForm.form.valid">Save</button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

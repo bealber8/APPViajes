@@ -1,17 +1,74 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-end (click)="login()">
+        Log-in <ion-icon name="log-in"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-slides pager>
+    <ion-slide>
+      <h2>Travel Requests</h2>
+    </ion-slide>
+    <ion-slide>
+      <h2>Travel Offers</h2>
+      <ion-card class="card">
+        <img class="img-card" src="../../assets/imgs/granCanaria.jpg" />
+        <ion-card-content>
+          <ion-card-title class="title-card">
+            Gran Canaria
+          </ion-card-title>
+          <p class="description">
+            Only this month travel to Gran Canaria for only 60€!
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <h2>Travel Offers</h2>
+      <ion-card class="card">
+        <img class="img-card" src="../../assets/imgs/Madrid.jpg" />
+        <ion-card-content>
+          <ion-card-title class="title-card">
+            Madrid
+          </ion-card-title>
+          <p class="description">
+            Only this month travel to Madrid for only 100€!
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <h2>Travel Offers</h2>
+      <ion-card class="card">
+        <img class="img-card" src="../../assets/imgs/fuerteventura.jpg" />
+        <ion-card-content>
+          <ion-card-title class="title-card">
+            Fuerteventura
+          </ion-card-title>
+          <p class="description">
+            Only this month travel to Fuerteventura for only 40€!
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <h2>Travel Offers</h2>
+      <ion-card class="card">
+        <img class="img-card" src="../../assets/imgs/laPalma.jpg" />
+        <ion-card-content>
+          <ion-card-title class="title-card">
+            La Palma
+          </ion-card-title>
+          <p class="description">
+            Only this month travel to La Palma for only 70€!
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

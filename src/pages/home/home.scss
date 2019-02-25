@@ -1,3 +1,43 @@
 page-home {
+    h2{
+        text-align: center;
+        // padding-block-start: 70%;
+        font-style: italic;
+        font-family: 'Times New Roman', Times, serif;
+        color:white;
+        text-shadow: 1px 1px red;
+        font-weight: bold;
 
+        // text-decoration-line: overline underline;
+        // text-decoration-style: wavy;
+        // text-decoration-color: salmon;
+        // color: rgb(113, 38, 156);
+        // text-shadow: 1px 1px salmon;
+    }
+
+    .card{
+       background-color: peachpuff;
+       align-content: center;
+    }
+
+    .title-card{
+        color: black;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        font-style: italic;
+        font-size: 30px;
+        text-decoration: darkcyan;
+        text-decoration-line: underline;
+        text-decoration-style: dotted;
+    }
+
+    .description{
+        background-color: aliceblue;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 16px;
+    }
+
+    img-card{
+        align-self: center;
+    }
 }

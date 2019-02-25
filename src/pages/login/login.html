@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            Login
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="formLogin" (ngSubmit)="login(formLogin.value)" novalidate>
+        <ion-list>
+            <ion-item>
+                <ion-label stacked><ion-icon name="contact"></ion-icon> Username:</ion-label>
+                <ion-input formControlName="username" type="text" placeholder="Username"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formLogin.get('username').errors && formLogin.get('username').dirty">
+                <p color="danger" ion-text *ngIf="formLogin.get('username').hasError('maxLength')">Max of 50
+                    characters</p>
+                <p color="danger" ion-text *ngIf="formLogin.get('username').hasError('pattern')">It is not a
+                    correct name</p>
+                <p color="danger" ion-text *ngIf="formLogin.get('username').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked><ion-icon name="unlock"></ion-icon> Password:</ion-label>
+                <ion-input formControlName="password" type="password" placeholder="password"></ion-input>
+            </ion-item>
+            <ion-item *ngIf="formLogin.get('password').errors && formLogin.get('password').dirty">
+                <p color="danger" ion-text *ngIf="formLogin.get('password').hasError('pattern')">It is not a
+                    correct password</p>
+                <p color="danger" ion-text *ngIf="formLogin.get('password').hasError('required')">Field is
+                    required</p>
+            </ion-item>
+        </ion-list>
+        <div padding>
+            <button id='buttonInsert' color='danger' ion-button block type="submit" [disabled]="formLogin.invalid">Login</button>
+        </div>
+    </form>
+        <div padding>
+            <button ion-button block color='danger' class="custom-button" outline (click)="registerUser()">Sign In</button>
+        </div>
+</ion-content>
