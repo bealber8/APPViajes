@@ -62,6 +62,21 @@ export class TravelRequestsPage {
         toast.present();
       }
     );
+    this.servicio.deleteTravelSql(id).then(
+      (data) =>{
+        // this.models.splice(
+        //   this.models.map(item => item.id).indexOf(id), 1)
+        // console.log(data);
+        const toast = this.toastCtrl.create({
+          message: 'Travel was deleted successfully to SQLite db',
+          duration: 3000
+        });
+        toast.present();
+      },
+      (error) =>{
+        console.log(error);
+      }
+    );
   }
 
 }

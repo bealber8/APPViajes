@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { TravelRequestsPage } from '../pages/travelRequests/travelRequests';
 import { ContactPage } from '../pages/contact/contact';
@@ -16,6 +16,10 @@ import { InsertTravelPage } from '../pages/insertTravel/insertTravel';
 import { UpdateTravelPage } from '../pages/updateTravel/updateTravel';
 import { LoginPage } from '../pages/login/login';
 import { RegisterUserPage } from '../pages/registerUser/registerUser';
+import { RecomendationsPage } from '../pages/recomendations/recomendations';
+
+import { SQLite } from '@ionic-native/sqlite';
+import { Facebook } from '@ionic-native/facebook';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { RegisterUserPage } from '../pages/registerUser/registerUser';
     InsertTravelPage,
     UpdateTravelPage,
     LoginPage,
-    RegisterUserPage
+    RegisterUserPage,
+    RecomendationsPage
   ],
   imports: [
     BrowserModule,
@@ -44,13 +49,15 @@ import { RegisterUserPage } from '../pages/registerUser/registerUser';
     InsertTravelPage,
     UpdateTravelPage,
     LoginPage,
-    RegisterUserPage
+    RegisterUserPage,
+    RecomendationsPage
   ],
   providers: [
+    SQLite,
     StatusBar,
     SplashScreen,
-    UserServiceProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    UserServiceProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }

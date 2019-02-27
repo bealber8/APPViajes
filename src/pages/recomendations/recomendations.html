@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Recommendations</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<!-- <ion-content padding>
+    <ion-list>
+        <ion-item-sliding *ngFor="let recommendation of recommendations">
+          <ion-item>
+              <img src="{{recommendation.image}}"/>
+              <h2>{{recommendation.name}}</h2>
+              <p><ion-icon name="heart"></ion-icon> {{recommendation.hearts}}</p>
+          </ion-item>
+          <ion-item-options>
+            <button ion-button color='white' icon-start>
+              <ion-icon name="create"></ion-icon>
+              Update
+            </button>
+            <button ion-button color='danger' icon-start>
+              <ion-icon name="trash"></ion-icon>
+              Delete
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+</ion-content> -->
+<ion-content class="card-background-page">
+  <ion-card *ngFor="let recommendation of recommendations">
+    <img src="{{recommendation.image}}" />
+    <div class="card-title">{{recommendation.name}}</div>
+    <div class="card-subtitle"><ion-icon name="heart"></ion-icon> {{recommendation.hearts}}</div>
+  </ion-card>
+</ion-content>

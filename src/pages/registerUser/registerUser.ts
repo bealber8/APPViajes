@@ -26,9 +26,6 @@ export class RegisterUserPage {
   
 
   postUser(){
-    //var encryptPassword = Md5.hashStr(this.formRegister.get('password').value);
-    //var bcrypt = require('bcryptjs');
-    //var salt = BcryptJS.genSaltSync(10);
     var hash = BcryptJS.hashSync(this.formRegister.get('password').value, 4);
     var user = {
       name: this.formRegister.get('name').value,
@@ -56,41 +53,4 @@ export class RegisterUserPage {
     );
     this.nav.setRoot(LoginPage);
   }
- 
-  // public createAccount() {
-  //   this.nav.push('RegisterPage');
-  // }
- 
-  // public login() {
-  //   this.showLoading()
-  //   this.auth.login(this.registerCredentials).subscribe(allowed => {
-  //     if (allowed) {        
-  //       this.nav.setRoot('HomePage');
-  //     } else {
-  //       this.showError("Access Denied");
-  //     }
-  //   },
-  //     error => {
-  //       this.showError(error);
-  //     });
-  // }
- 
-  // showLoading() {
-  //   this.loading = this.loadingCtrl.create({
-  //     content: 'Please wait...',
-  //     dismissOnPageChange: true
-  //   });
-  //   this.loading.present();
-  // }
- 
-  // showError(text) {
-  //   this.loading.dismiss();
- 
-  //   let alert = this.alertCtrl.create({
-  //     title: 'Fail',
-  //     subTitle: text,
-  //     buttons: ['OK']
-  //   });
-  //   alert.present(prompt);
-  // }
 }
